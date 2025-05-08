@@ -1,0 +1,34 @@
+provider "google" {
+  project = "c000050-qa-ccai"
+  region  = "us-central1"
+}
+locals {
+  project_id            = "c000050-qa-ccai"
+  service_account_email = "qa-env@c000050-qa-ccai.iam.gserviceaccount.com"
+  bucket_name           = "qa_sqlauto_bkt"
+}
+resource "google_project_iam_member" "cloudfunctions_developer" {
+  project = local.project_id
+  role    = "roles/cloudfunctions.developer"
+  member  = "serviceAccount:${local.service_account_email}"
+}
+resource "google_project_iam_member" "pubsub_admin" {
+  project = local.project_id
+  role    = "roles/pubsub.admin"
+  member  = "serviceAccount:${local.service_account_email}"
+}
+resource "google_project_iam_member" "cloudscheduler_admin" {
+  project = local.project_id
+  role    = "roles/cloudscheduler.admin"
+  member  = "serviceAccount:${local.service_account_email}"
+}
+resource "google_project_iam_member" "service_account_user" {
+  project = local.project_id
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${local.service_account_email}"
+}
+resource "google_storage_bucket_iam_member" "bucket_object_admin" {
+  bucket = local.bucket_name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${local.service_account_email}"
+}
