@@ -72,19 +72,21 @@ module "cloud_function_with_pubsub" {
 
 ### Steps:
 1. *Initialize Terraform*:
-   bash
+   ```bash
    terraform init
-   
+   ```
+
 
 2. *Validate the Configuration*:
-   bash
+   ```bash
    terraform validate
+   ```
    
 
 3. *Apply the Configuration*:
-   bash
+   ```bash
    terraform apply
-   
+   ```
 
 ---
 
