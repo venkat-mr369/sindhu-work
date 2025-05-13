@@ -41,7 +41,7 @@ This Terraform module creates a Google Cloud Function that is triggered by a Pub
 
 Below is an example of how to use this module in your Terraform configuration:
 
-hcl
+```bash
 module "cloud_function_with_pubsub" {
   source = "./path-to-this-module"
 
@@ -68,7 +68,7 @@ module "cloud_function_with_pubsub" {
   instance_id            = "my-cloud-sql-instance"
   ingress_settings       = "ALLOW_ALL"
 }
-
+```
 
 ### Steps:
 1. *Initialize Terraform*:
